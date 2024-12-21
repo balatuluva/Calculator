@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+// File: src/BodyDimensionsApp.js
+import React, { useState } from "react";
+import axios from "axios";
 
 function BodyDimensionsApp() {
   const [image, setImage] = useState(null);
@@ -14,10 +15,10 @@ function BodyDimensionsApp() {
     if (!image) return alert("Please upload an image.");
 
     const formData = new FormData();
-    formData.append('file', image);
+    formData.append("file", image);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/calculate', formData);
+      const response = await axios.post("http://<backend-api-endpoint>/api/calculate", formData);
       setDimensions(response.data);
     } catch (error) {
       console.error("Error calculating dimensions:", error);
@@ -36,7 +37,9 @@ function BodyDimensionsApp() {
           <h2>Calculated Dimensions</h2>
           <ul>
             {Object.entries(dimensions).map(([key, value]) => (
-              <li key={key}>{key}: {value}</li>
+              <li key={key}>
+                {key}: {value}
+              </li>
             ))}
           </ul>
         </div>
